@@ -19,7 +19,11 @@ namespace SuperMario
         }
         public override void Update(GameTime gameTime)
         {
-            pos.X += 1;
+            pos.X += -1;
+            if (pos.X <= -1200)
+            {
+                pos = new Vector2();
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

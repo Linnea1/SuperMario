@@ -18,7 +18,7 @@ namespace SuperMario
 
         public static void Load(ContentManager content)
         {
-            //cloudTex = content.Load<Texture2D>(@"Clouds)");
+            cloudTex = content.Load<Texture2D>(@"Clouds)");
             landTex = content.Load<Texture2D>(@"Ground");
 
             spriteFont = content.Load<SpriteFont>(@"Font");
