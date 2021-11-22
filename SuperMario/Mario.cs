@@ -16,9 +16,9 @@ namespace SuperMario
 
         Texture2D texture;
 
-        float speed;
         float rotation;
-        bool moving = false;
+        public bool moving = false;
+        float speed = 100.0f;
 
         SpriteEffects pacmanFx;
 
@@ -33,8 +33,8 @@ namespace SuperMario
         {
             this.timeSinceLastFrames = 0;
             this.timeBetweenFrames = 0.1;
-            this.sheetSize = new Point(3, 1);
-            this.frameSize = new Point(40, 40);
+            this.sheetSize = new Point(7, 1);
+            this.frameSize = new Point(29, 40);
             this.currentFrame = new Point(0, 5);
             this.texture = texture;
             this.pacmanFx = SpriteEffects.None;
@@ -48,37 +48,36 @@ namespace SuperMario
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 {
-                    direction = new Vector2(-1, 0);
+                    ChangeDirection(new Vector2(-1, 0));
                     rotation = 0;
                     pacmanFx = SpriteEffects.FlipHorizontally;
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 {
-                    direction = new Vector2(1, 0);
+                    ChangeDirection(new Vector2(1, 0));
                     rotation = 0;
                     pacmanFx = SpriteEffects.None;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    direction = new Vector2(0, -1);
-                    rotation = MathHelper.ToRadians(-90);
-                    pacmanFx = SpriteEffects.None;
+                    ChangeDirection(new Vector2(0, -1));
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    direction = new Vector2(0, 1);
-                    rotation = MathHelper.ToRadians(90);
-                    pacmanFx = SpriteEffects.None;
+                    ChangeDirection(new Vector2(0, 1));
                 }
-                ChangeDirection(direction);
             }
             else
             {
                 pos += direction * speed *
                 (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-
+                if (Vector2.Distance(pos, destination) < 1)
+                {
+                    pos = destination;
+                    moving = false;
+                }
             }
             if (Vector2.Distance(pos, destination) <= 1)
             {
