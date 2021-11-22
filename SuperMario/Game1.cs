@@ -72,6 +72,10 @@ namespace SuperMario
                         tileArray[l, c] = new Tile(new Vector2(TextureManager.wallTex.Width * l, TextureManager.wallTex.Height * c), TextureManager.wallTex, false);
                         mario = new Mario(new Vector2(TextureManager.wallTex.Width * l + 20, TextureManager.wallTex.Height * c + 20), TextureManager.marioTex);
                     }
+                    if (strings[c][l] == 'W')
+                    {
+                        tileArray[l, c] = new Tile(new Vector2(TextureManager.wallTex.Width * l, TextureManager.wallTex.Height * c), TextureManager.wallTex, true);
+                    }
                 }
             }
 

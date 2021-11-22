@@ -19,7 +19,19 @@ namespace SuperMario
         }
         public override void Update(GameTime gameTime)
         {
-            pos.X += -1;
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                pos.X += -8;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                pos.X += 8;
+            }
+            else
+            {
+                pos.X += 0;
+            }
+                pos.X += 0;
             if (pos.X <= -1200)
             {
                 pos = new Vector2();

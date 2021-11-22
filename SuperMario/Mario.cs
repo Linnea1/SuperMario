@@ -17,7 +17,7 @@ namespace SuperMario
         Texture2D texture;
 
         float rotation;
-        public bool moving = false;
+        bool moving = false;
         float speed = 100.0f;
 
         SpriteEffects pacmanFx;
@@ -34,7 +34,7 @@ namespace SuperMario
             this.timeSinceLastFrames = 0;
             this.timeBetweenFrames = 0.1;
             this.sheetSize = new Point(7, 1);
-            this.frameSize = new Point(29, 40);
+            this.frameSize = new Point(58, 80);
             this.currentFrame = new Point(0, 5);
             this.texture = texture;
             this.pacmanFx = SpriteEffects.None;
@@ -112,7 +112,7 @@ namespace SuperMario
         public void ChangeDirection(Vector2 dir)
         {
             direction = dir;
-            Vector2 newDestination = pos + direction * 40;
+            Vector2 newDestination = pos + direction * 80;
 
 
             if (!Game1.GetTileAtPos(newDestination))
