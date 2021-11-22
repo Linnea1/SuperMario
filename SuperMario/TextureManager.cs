@@ -11,14 +11,14 @@ namespace SuperMario
 {
     public static class TextureManager
     {
-        public static Texture2D cloudTex;
         public static Texture2D landTex;
+        public static Texture2D wallTex;
 
         public static SpriteFont spriteFont;
 
         public static void Load(ContentManager content)
         {
-            cloudTex = content.Load<Texture2D>(@"Clouds)");
+            wallTex = content.Load<Texture2D>(@"empty");
             landTex = content.Load<Texture2D>(@"Ground");
 
             spriteFont = content.Load<SpriteFont>(@"Font");

@@ -46,8 +46,8 @@ namespace SuperMario
             TextureManager.Load(Content);
             
             background = new Background(Vector2.Zero, TextureManager.landTex);
-            ReadFromFile("pacman.txt");
-            StreamReader file = new StreamReader("pacman.txt");
+            ReadFromFile("mario.txt");
+            StreamReader file = new StreamReader("mario.txt");
             strings = new List<string>();
 
             while (!file.EndOfStream)
@@ -63,7 +63,7 @@ namespace SuperMario
                 {
                     if (strings[c][l] == '-')
                     {
-                        tileArray[l, c] = new Tile(new Vector2(TextureManager.cloudTex.Width * l, TextureManager.cloudTex.Height * c), TextureManager.cloudTex, true);
+                        tileArray[l, c] = new Tile(new Vector2(TextureManager.wallTex.Width * l, TextureManager.wallTex.Height * c), TextureManager.wallTex, true);
                     }
                 }
             }
@@ -88,6 +88,10 @@ namespace SuperMario
             GraphicsDevice.Clear(Color.MistyRose);
             spriteBatch.Begin();
             background.Draw(spriteBatch);
+            foreach (Tile tile in tileArray)
+            {
+                tile.Draw(spriteBatch);
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }
